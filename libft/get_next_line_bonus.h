@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 16:06:13 by paulmart          #+#    #+#             */
-/*   Updated: 2023/12/18 17:22:48 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/02/26 19:16:39 by palu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 # include <stdlib.h>
 
 char	*get_next_line(int fd);
-char	*ft_strjoin(char *s1, char const *s2);
+char	*ft_joinstr(char *s1, char const *s2);
 size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *s);
-int		ft_strchr( const char *s, int c);
+int		ft_chrstr( const char *s, int c);
 char	*del_for_next_line(char *stock);
 char	*putline(char *stock);
 char	*get_line(int fd, char *stock);

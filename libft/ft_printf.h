@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:04:28 by ropkyns           #+#    #+#             */
-/*   Updated: 2024/01/09 16:18:14 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/02/26 19:09:24 by palu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 int		ft_printf(const char *string, ...);
 int		ft_format(char c, va_list args);
-int		ft_strlen(char *s);
+int		ft_lenstr(char *s);
 void	ft_putchar(char c);
 int		ft_print_char(char c);
 int		ft_print_str(char *str);
