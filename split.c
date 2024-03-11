@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:26:15 by palu              #+#    #+#             */
-/*   Updated: 2024/02/27 17:13:58 by palu             ###   ########.fr       */
+/*   Updated: 2024/03/11 15:25:36 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	count_words(char *str, char separator)
 {
-	
 	int		i;
 	int		count;
 	int		sep;
@@ -38,7 +37,7 @@ int	count_words(char *str, char separator)
 	return (count);
 }
 
-static char		*get_next_word(char *str, char separator)
+static char	*get_next_word(char *str, char separator)
 {
 	static int	index = 0;
 	char		*word;
@@ -64,7 +63,7 @@ static char		*get_next_word(char *str, char separator)
 	return (word);
 }
 
-char **ft_split(char *str, char separator)
+char	**ft_split(char *str, char separator)
 {
 	char	**new_str;
 	int		cw;
@@ -76,19 +75,18 @@ char **ft_split(char *str, char separator)
 	new_str = malloc(sizeof(char *) * (cw + 2));
 	if (!new_str)
 		return (NULL);
-	i = 0;
-	while (i <= cw)
+	i = -1;
+	while (++i <= cw)
 	{
 		if (i == 0)
 		{
 			new_str[i] = malloc(sizeof(char));
 			if (!new_str[i])
-				return (0);
-			new_str[i][0] = '\0';
+				return (NULL);
+			new_str[i][0] = 'a';
 			i++;
 		}
 		new_str[i] = get_next_word(str, separator);
-		i++;
 	}
 	new_str[i] = NULL;
 	return (new_str);

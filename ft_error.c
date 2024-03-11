@@ -3,28 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 18:04:20 by palu              #+#    #+#             */
-/*   Updated: 2024/03/06 22:37:48 by palu             ###   ########.fr       */
+/*   Updated: 2024/03/11 17:04:40 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void free_stack(t_stack **a)
+void	free_stack(t_stack *a)
 {
 	t_stack		*tmp;
 	t_stack		*current;
 
-	current = *a;
+	if (a == NULL)
+		return ;
+	current = a;
 	while (current)
 	{
 		tmp = current->next;
 		free(current);
 		current = tmp;
 	}
-	*a = NULL;
 }
 
 void	free_argv(char **argv)
@@ -32,13 +33,10 @@ void	free_argv(char **argv)
 	int		i;
 
 	i = -1;
-	if (argv == NULL || *argv == NULL)
+	if (NULL == argv || NULL == *argv)
 		return ;
 	while (argv[i])
-	{
-		free(argv[i]);
-		i++;
-	}
+		free(argv[i++]);
 	free(argv - 1);
 }
 
@@ -48,14 +46,14 @@ void	error_free(t_stack **a, char **argv, int arg_2)
 
 	i = -1;
 	if (!(a == NULL))
-		free_stack(a);
+		free_stack(*a);
 	if (arg_2 == 0)
 		free_argv(argv);
 	write(2, "Error\n", 6);
 	exit(1);
 }
 
-int		rep_error(t_stack *a, int nbr)
+int	rep_error(t_stack *a, int nbr)
 {
 	if (a == NULL)
 		return (0);
@@ -68,19 +66,19 @@ int		rep_error(t_stack *a, int nbr)
 	return (0);
 }
 
-int		syntaxe_error(char *nbr)
+int	syntaxe_error(char *nbr)
 {
 	int		i;
 
 	i = 0;
-	if (!(nbr[i] == '+' 
-			|| nbr[i] == '-' 
+	if (!(nbr[i] == '+'
+			|| nbr[i] == '-'
 			|| nbr[i] >= '0' && nbr[i] <= '9'))
 		return (1);
 	i++;
 	if ((nbr[i] == '+' || nbr[i] == '-'
 			|| !(nbr[i] >= '0' && nbr[i] <= '9'))
-			&& !(nbr[i] == '\0'))
+		&& !(nbr[i] == '\0'))
 		return (1);
 	i++;
 	while (nbr[i])

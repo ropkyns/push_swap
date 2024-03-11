@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 16:20:52 by palu              #+#    #+#             */
-/*   Updated: 2024/03/06 20:56:20 by palu             ###   ########.fr       */
+/*   Updated: 2024/03/11 17:33:10 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 long	ft_atol(char *argv)
 {
-	int	i;
+	int		i;
 	long	signe;
 	long	nb;
 
@@ -42,12 +42,11 @@ t_stack	*find_last_node(t_stack *stack)
 {
 	if (stack == NULL)
 		return (NULL);
-	while (stack)
+	while (stack->next)
 	{
-		if(stack->next == NULL)
-			return (stack);
 		stack = stack->next;
 	}
+	return (stack);
 }
 
 void	add_node(t_stack **stack, int nbr)
@@ -87,7 +86,7 @@ void	stack_init(t_stack **a, char **argv, int arg_2)
 		if (nbr < INT_MIN && nbr > INT_MAX)
 			error_free(a, argv, arg_2);
 		if (rep_error(*a, (int)nbr) == 1)
-			error_free(a, argv,arg_2);
+			error_free(a, argv, arg_2);
 		add_node(a, (int)nbr);
 		i++;
 	}

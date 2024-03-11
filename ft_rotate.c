@@ -1,47 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 15:26:23 by paulmart          #+#    #+#             */
-/*   Updated: 2024/03/11 18:14:15 by paulmart         ###   ########.fr       */
+/*   Created: 2024/03/11 11:26:20 by paulmart          #+#    #+#             */
+/*   Updated: 2024/03/11 15:04:55 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-int	main(int argc, char **argv)
+static void	rotate(t_stack **stack)
 {
-	t_stack	*a;
-	int		arg_2;
 	t_stack	*tmp;
+	t_stack	*last_node;
 
-	a = NULL;
-	arg_2 = 1;
-	if (argc == 2)
-	{
-		argv = ft_split(argv[1], ' ');
-		arg_2 = 0;
-	}
-	stack_init(&a, argv + 1, arg_2);
-	tmp = a;
-	while (tmp != NULL)
-	{
-		printf("%ld\n", tmp->value);
-		tmp = tmp->next;
-	}
-	sa(&a);
-	tmp = a;
-	while (tmp != NULL)
-	{
-		printf("%ld\n", tmp->value);
-		tmp = tmp->next;
-	}
-	free_stack(a);
-	if (argc == 2)
-		free_argv(argv);
-	return (0);
+	if (stack == NULL || *stack == NULL)
+		return ;
+	tmp = *stack;
+	tmp->next = NULL;
+	*stack = (*stack)->next;
+	last_node = find_last_node(*stack);
+	last_node->next = tmp;
+}
+
+void	ra(t_stack **a)
+{
+	rotate(a);
+	write(1, "ra\n", 3);
+}
+
+void	rb(t_stack **b)
+{
+	rotate(b);
+	write(1, "rb\n", 3);
+}
+
+void	rr(t_stack **a, t_stack **b)
+{
+	rotate(a);
+	rotate(b);
+	write(1, "rr\n", 3);
 }
