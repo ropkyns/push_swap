@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:09:29 by paulmart          #+#    #+#             */
-/*   Updated: 2024/03/12 14:35:15 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:24:39 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ char	**ft_split(char *str, char separator);
 void	stack_init(t_stack **a, char **argv, int arg_2);
 void	add_node(t_stack **stack, int nbr);
 t_stack	*find_last_node(t_stack *stack);
+t_stack	*find_smallest_node(t_stack *a);
 t_stack	*find_before_last_node(t_stack *stack);
 long	ft_atol(char *argv);
 int		syntaxe_error(char *nbr);
@@ -47,5 +48,7 @@ void	rrb(t_stack **b);
 void	pa(t_stack **a, t_stack **b);
 void	pb(t_stack **a, t_stack **b);
 void	mini_sort(t_stack **a);
+int		stack_len(t_stack *stack);
+int		sorted(t_stack *stack);
 
 #endif

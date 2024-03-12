@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 14:20:06 by paulmart          #+#    #+#             */
-/*   Updated: 2024/03/12 14:30:15 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:04:04 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,15 @@ void	mini_sort(t_stack **a)
 	if ((*a)->value > (*a)->next->value)
 		sa(a);
 }
+
+int	sorted(t_stack *stack)
+{
+	while (stack->next != NULL)
+	{
+		if (stack->value > stack->next->value)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
