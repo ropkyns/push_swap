@@ -1,46 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rotate.c                                        :+:      :+:    :+:   */
+/*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 11:26:20 by paulmart          #+#    #+#             */
-/*   Updated: 2024/03/12 11:36:26 by paulmart         ###   ########.fr       */
+/*   Created: 2024/03/12 12:42:20 by paulmart          #+#    #+#             */
+/*   Updated: 2024/03/12 12:51:59 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	rotate(t_stack **stack)
+static void	push(t_stack **src, t_stack **dst)
 {
 	t_stack	*tmp;
-	t_stack	*last_node;
 
-	if (stack == NULL || *stack == NULL)
+	if (*src == NULL)
 		return ;
-	tmp = *stack;
-	*stack = (*stack)->next;
-	last_node = find_last_node(*stack);
-	tmp->next = NULL;
-	last_node->next = tmp;
+	tmp = (*src)->next;
+	(*src)->next = *dst;
+	*dst = *src;
+	*src = tmp;
 }
 
-void	ra(t_stack **a)
+void	pa(t_stack **a, t_stack **b)
 {
-	rotate(a);
-	write(1, "ra\n", 3);
+	push(b, a);
+	write(1, "pa\n", 3);
 }
 
-void	rb(t_stack **b)
+void	pb(t_stack **a, t_stack **b)
 {
-	rotate(b);
-	write(1, "rb\n", 3);
-}
-
-void	rr(t_stack **a, t_stack **b)
-{
-	rotate(a);
-	rotate(b);
-	write(1, "rr\n", 3);
+	push(a, b);
+	write(1, "pb\n", 3);
 }

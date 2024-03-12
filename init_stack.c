@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 16:20:52 by palu              #+#    #+#             */
-/*   Updated: 2024/03/11 17:33:10 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/03/12 11:34:57 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,10 @@ long	ft_atol(char *argv)
 
 t_stack	*find_last_node(t_stack *stack)
 {
-	if (stack == NULL)
+	if (!stack)
 		return (NULL);
 	while (stack->next)
-	{
 		stack = stack->next;
-	}
 	return (stack);
 }
 
