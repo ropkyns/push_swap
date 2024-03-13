@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 11:50:47 by paulmart          #+#    #+#             */
-/*   Updated: 2024/03/12 17:24:03 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/03/13 12:50:55 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,15 @@ t_stack	*find_smallest_node(t_stack *a)
 		}
 		a = a->next;
 	}
-	return (highest_node);
+	return (smallest_node);
+}
+
+void	five_stack(t_stack **a, t_stack **b)
+{
+	while (stack_len(*a) > 3)
+	{
+		init_nodes(*a, *b);
+		end_rotation(a, find_smallest_node(*a), 'a');
+		pb(a, b);
+	}
 }

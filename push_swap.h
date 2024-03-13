@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:09:29 by paulmart          #+#    #+#             */
-/*   Updated: 2024/03/12 17:24:39 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/03/13 15:55:48 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 typedef struct s_stack
 {
 	long						value;
+	int							pos;
 	struct s_stack				*next;
 	struct s_stack				*target_node;
 }	t_stack;
@@ -50,5 +51,9 @@ void	pb(t_stack **a, t_stack **b);
 void	mini_sort(t_stack **a);
 int		stack_len(t_stack *stack);
 int		sorted(t_stack *stack);
+void	set_pos(t_stack *stack);
+void	set_target(t_stack *a, t_stack *b);
+void	init_nodes(t_stack *a, t_stack *b);
+void	five_stack(t_stack **a, t_stack **b);
 
 #endif
