@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 11:50:47 by paulmart          #+#    #+#             */
-/*   Updated: 2024/03/13 12:50:55 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/03/14 14:18:05 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,24 @@ void	five_stack(t_stack **a, t_stack **b)
 		end_rotation(a, find_smallest_node(*a), 'a');
 		pb(a, b);
 	}
+}
+
+t_stack	*find_lowest_cost(t_stack *stack)
+{
+	long	min_cost;
+	t_stack	*lowest_cost;
+
+	if (stack == NULL)
+		return (NULL);
+	min_cost = LONG_MAX;
+	while (stack)
+	{
+		if (stack->cost < min_cost)
+		{
+			min_cost = stack->cost;
+			lowest_cost = stack;
+		}
+		stack = stack->next;
+	}
+	return (lowest_cost);
 }

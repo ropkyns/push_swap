@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:26:23 by paulmart          #+#    #+#             */
-/*   Updated: 2024/03/12 16:13:33 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/03/14 14:58:37 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 	int		arg_2;
-	t_stack	*tmp;
 
 	a = NULL;
 	b = NULL;
@@ -35,13 +34,14 @@ int	main(int argc, char **argv)
 			sa(&a);
 		else if (stack_len(a) == 3)
 			mini_sort(&a);
+		else
+			push_swap(&a, &b);
 	}
-	tmp = a;
+	free_stack(a);
+}
+/* 	tmp = a;
 	while (tmp != NULL)
 	{
 		printf("%ld\n", tmp->value);
 		tmp = tmp->next;
-	}
-	free_stack(a);
-	return (0);
-}
+	} */

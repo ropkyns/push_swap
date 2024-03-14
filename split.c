@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:26:15 by palu              #+#    #+#             */
-/*   Updated: 2024/03/11 15:25:36 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/03/14 14:16:06 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	count_words(char *str, char separator)
 	int		sep;
 
 	count = 0;
+	i = 0;
 	while (str[i])
 	{
 		sep = 1;
