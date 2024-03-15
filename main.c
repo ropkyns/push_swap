@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:26:23 by paulmart          #+#    #+#             */
-/*   Updated: 2024/03/14 14:58:37 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:57:02 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	main(int argc, char **argv)
 	}
 	free_stack(a);
 }
+
 /* 	tmp = a;
 	while (tmp != NULL)
 	{
