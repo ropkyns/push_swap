@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 18:04:20 by palu              #+#    #+#             */
-/*   Updated: 2024/03/14 14:12:29 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/03/18 16:03:34 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,7 @@ void	free_argv(char **argv)
 
 void	error_free(t_stack **a, char **argv, int arg_2)
 {
-	int		i;
-
-	i = -1;
-	if (!(a == NULL))
-		free_stack(*a);
+	free_stack(*a);
 	if (arg_2 == 0)
 		free_argv(argv);
 	write(2, "Error\n", 6);
@@ -75,10 +71,8 @@ int	syntaxe_error(char *nbr)
 			|| nbr[i] == '-'
 			|| (nbr[i] >= '0' && nbr[i] <= '9')))
 		return (1);
-	i++;
-	if ((nbr[i] == '+' || nbr[i] == '-'
-			|| !(nbr[i] >= '0' && nbr[i] <= '9'))
-		&& !(nbr[i] == '\0'))
+	if ((nbr[i] == '+' || nbr[i] == '-')
+		&& !(nbr[1] >= '0' && nbr[1] <= '9'))
 		return (1);
 	i++;
 	while (nbr[i])

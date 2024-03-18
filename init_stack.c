@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 16:20:52 by palu              #+#    #+#             */
-/*   Updated: 2024/03/12 11:34:57 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/03/18 15:48:48 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ long	ft_atol(char *argv)
 	nb = 0;
 	while ((argv[i] >= 9 && argv[i] <= 13) || argv[i] == 32)
 		i++;
-	if (argv[i] == '-')
+	if (argv[i] == '+')
+		i++;
+	else if (argv[i] == '-')
 	{
 		signe = -1;
 		i++;
 	}
-	else if (argv[i] == '+')
-		i++;
 	while (argv[i] >= '0' && argv[i] <= '9')
 	{
-		nb = nb * 10 + argv[i] - '0';
+		nb = (nb * 10) + (argv[i] - '0');
 		i++;
 	}
 	return (nb * signe);
@@ -81,7 +81,7 @@ void	stack_init(t_stack **a, char **argv, int arg_2)
 		if (syntaxe_error(argv[i]))
 			error_free(a, argv, arg_2);
 		nbr = ft_atol(argv[i]);
-		if (nbr < INT_MIN && nbr > INT_MAX)
+		if (nbr < INT_MIN || nbr > INT_MAX)
 			error_free(a, argv, arg_2);
 		if (rep_error(*a, (int)nbr) == 1)
 			error_free(a, argv, arg_2);

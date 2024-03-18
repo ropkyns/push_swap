@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:26:23 by paulmart          #+#    #+#             */
-/*   Updated: 2024/03/15 14:57:02 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:09:30 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ int	main(int argc, char **argv)
 			push_swap(&a, &b);
 	}
 	free_stack(a);
+	if (arg_2 == 0)
+		free_argv(argv);
+	return (0);
 }
 
 /* 	tmp = a;

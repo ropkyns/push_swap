@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:26:15 by palu              #+#    #+#             */
-/*   Updated: 2024/03/14 14:16:06 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/03/18 12:21:07 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ static char	*get_next_word(char *str, char separator)
 	len = 0;
 	i = 0;
 	while (str[index] == separator)
-		index++;
+		++index;
 	while ((str[index + len] != separator) && str[index + len])
-		len++;
-	word = malloc(sizeof(char) * (len + 1));
+		++len;
+	word = malloc((sizeof(char) * (size_t)len) + 1);
 	if (!word)
 		return (NULL);
 	while ((str[index] != separator) && str[index])
@@ -76,18 +76,18 @@ char	**ft_split(char *str, char separator)
 	new_str = malloc(sizeof(char *) * (cw + 2));
 	if (!new_str)
 		return (NULL);
-	i = -1;
-	while (++i <= cw)
+	i = 0;
+	while (cw-- >= 0)
 	{
 		if (i == 0)
 		{
 			new_str[i] = malloc(sizeof(char));
-			if (!new_str[i])
+			if (new_str[i] == NULL)
 				return (NULL);
-			new_str[i][0] = 'a';
-			i++;
+			new_str[i++][0] = '\0';
+			continue ;
 		}
-		new_str[i] = get_next_word(str, separator);
+		new_str[i++] = get_next_word(str, separator);
 	}
 	new_str[i] = NULL;
 	return (new_str);

@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 12:51:30 by paulmart          #+#    #+#             */
-/*   Updated: 2024/03/14 14:59:49 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/03/18 16:36:08 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,6 @@ void	push_swap(t_stack **a, t_stack **b)
 		while (*a != smallest)
 			ra(a);
 	else
-		while (*a)
+		while (*a != smallest)
 			rra(a);
 }
