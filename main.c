@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:26:23 by paulmart          #+#    #+#             */
-/*   Updated: 2024/03/18 17:09:30 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/03/19 11:47:23 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,14 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	int		arg_2;
 
 	a = NULL;
 	b = NULL;
-	arg_2 = 1;
-	if (argc == 2)
-	{
+	if (argc == 1 || (argc == 2 && syntaxe_error(argv[1])))
+		return (write(2, "Error\n", 6));
+	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
-		arg_2 = 0;
-	}
-	stack_init(&a, argv + 1, arg_2);
+	stack_init(&a, argv + 1, argc);
 	if (!sorted(a))
 	{
 		if (stack_len(a) == 2)
@@ -38,8 +35,8 @@ int	main(int argc, char **argv)
 			push_swap(&a, &b);
 	}
 	free_stack(a);
-	if (arg_2 == 0)
-		free_argv(argv);
+	if (argc == 2)
+		free_argv(argv + 1);
 	return (0);
 }
 

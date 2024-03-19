@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 16:20:52 by palu              #+#    #+#             */
-/*   Updated: 2024/03/18 15:48:48 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/03/19 11:35:46 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,15 @@ void	add_node(t_stack **stack, int nbr)
 	}
 }
 
-void	stack_init(t_stack **a, char **argv, int arg_2)
+void	stack_init(t_stack **a, char **argv, int argc)
 {
 	long	nbr;
 	int		i;
+	int		arg_2;
 
+	arg_2 = 1;
+	if (argc == 2)
+		arg_2 = 0;
 	i = 0;
 	while (argv[i])
 	{
