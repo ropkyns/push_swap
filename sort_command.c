@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 12:51:30 by paulmart          #+#    #+#             */
-/*   Updated: 2024/03/18 16:36:08 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:52:28 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void	end_rotation(t_stack **stack, t_stack *smallest_node, char name)
 	{
 		if (name == 'a')
 		{
-			if (smallest_node->pos >= stack_len(*stack) / 2)
+			if (smallest_node->pos <= stack_len(*stack) / 2)
 				ra(stack);
 			else
 				rra(stack);
 		}
 		if (name == 'b')
 		{
-			if (smallest_node->pos >= stack_len(*stack) / 2)
+			if (smallest_node->pos <= stack_len(*stack) / 2)
 				rb(stack);
 			else
 				rrb(stack);
@@ -56,10 +56,10 @@ static void	sort(t_stack **a, t_stack **b)
 	lowest = find_lowest_cost(*b);
 	if (lowest->pos <= stack_len(*b) / 2
 		&& lowest->target_node->pos <= stack_len(*a))
-	{	
+	{
 		reverse = 1;
 		rotation(a, b, lowest, reverse);
-	}	
+	}
 	else if (lowest->pos > stack_len(*b) / 2
 		&& lowest->target_node->pos > stack_len (*a))
 	{

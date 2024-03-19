@@ -6,7 +6,7 @@
 #    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/25 17:11:17 by ropkyns           #+#    #+#              #
-#    Updated: 2024/03/18 10:28:30 by paulmart         ###   ########.fr        #
+#    Updated: 2024/03/19 14:52:45 by paulmart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,4 +34,33 @@ clean:
 fclean:			clean
 				$(RM) $(NAME)
 
-re:				fclean $(NAME)
+re:				fclean
+	$(MAKE) $(NAME)
+
+
+test:				$(NAME)	
+					$(eval ARG = $(shell shuf -i 0-100 -n 100))
+					./push_swap $(ARG) | ./checker_linux $(ARG)
+					@echo -n "Nombre d'opérations : "
+					@./push_swap $(ARG) | wc -l
+
+test3:				$(NAME)	
+					$(eval ARG = $(shell shuf -i 0-100 -n 3))
+					./push_swap $(ARG) | ./checker_linux $(ARG)
+					@echo -n "Nombre d'opérations : "
+					@./push_swap $(ARG) | wc -l
+
+test5:				$(NAME)	
+					$(eval ARG = $(shell shuf -i 0-5000 -n 5))
+					./push_swap $(ARG) | ./checker_linux $(ARG)
+					@echo -n "Nombre d'opérations : "
+					@./push_swap $(ARG) | wc -l
+
+test500:			$(NAME)	
+					$(eval ARG = $(shell shuf -i 0-5000 -n 500))
+					./push_swap $(ARG) | ./checker_linux $(ARG)
+					@echo -n "Nombre d'opérations : "
+					@./push_swap $(ARG) | wc -l
+
+
+.PHONY: clean fclean re test test3 test5 test500
